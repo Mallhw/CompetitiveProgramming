@@ -21,9 +21,35 @@ int main()
 { 
     ios::sync_with_stdio(0); 
     cin.tie(0); 
-    int T; 
-    cin >> T; 
-    while (T--) { 
-    } 
+    int n;
+    cin >> n;
+    map<ll, ll> q;
+    ll ans = n;
+    map<ll, ll> map;
+    for(int i = 0; i < n; i++){
+        ll tempA, b;
+        cin >> tempA >> b;
+        map[tempA] = i;
+        q[b] = i;
+    }
+    vll arr(n);
+    auto it = map.begin();
+    auto it2 = q.begin();
+    for(int i = 0; i < n; i++){
+        arr[i] = it->second;
+        if(q.size() > 0) {
+            if(it->first > it2 -> first) {
+                arr[i] = it2 -> second;
+                q.erase(it2 -> first);
+                ans--;
+            }
+        }
+        it++;
+    }
+    cout << ans << endl;
+    for(int i = 0; i < n; i++){
+        cout << arr[i] + 1 << " ";
+    }
+    cout << endl;
     return 0; 
 } 
