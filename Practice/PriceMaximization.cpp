@@ -17,7 +17,6 @@ typedef pair<int, int> pi;
 #define PB push_back 
 #define POB pop_back 
 #define MP make_pair 
-
 int main() 
 { 
     ios::sync_with_stdio(0); 
@@ -25,20 +24,34 @@ int main()
     int T; 
     cin >> T; 
     while (T--) { 
-        ll n;
-        cin >> n;
+        int n, k;
+        cin >> n >> k;
+        vll arr(n);
+        for(int i = 0; i < n; i++) {
+            cin >> arr[i];
+        }
+        vll remainder(n);
+        ll ans = 0;
+        for(int i = 0; i < n; i++) {
+            remainder[i] = arr[i] % k;
+            ans += arr[i] / k;
+        }
 
-        ll ans = n / 3;
-        ll x = n % 3;
-        if(x == 2) {
-            cout << ans + 1 << ' ' << ans + 2 << ' ' << ans - 1 << endl;
+
+        sort(remainder.begin(), remainder.end());
+        int l = 0;
+        int r = n - 1;
+        while(l < r) {
+            if(remainder[l] + remainder[r] >= k) {
+                ans++;
+                l++;
+                r--;
+            } 
+            else {
+                l++;
+            }
         }
-        else if(x == 1) {
-            cout << ans << ' ' << ans + 2 << ' ' << ans - 1 << endl;
-        }
-        else {
-            cout << ans << ' ' << ans + 1 << ' ' << ans - 1 << endl;
-        }
+        cout << ans << '\n';
     } 
     return 0; 
 } 

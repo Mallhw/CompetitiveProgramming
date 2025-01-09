@@ -17,7 +17,34 @@ typedef pair<int, int> pi;
 #define PB push_back 
 #define POB pop_back 
 #define MP make_pair 
-
+void solve() {
+    ll n;
+        cin >> n;
+        vll a(n);
+        vll b(n);
+        for(int i = 0; i < n; i++) {
+            cin >> a[i];
+        }
+        
+        for(int i = 0; i < n; i++) {
+            cin >> b[i];  
+        }
+        ll dif = b[0] - a[0];
+        for(int i = 0; i < n; i++) {
+            dif = max(dif, a[i] - b[i]);
+        }
+        for(int i = 0; i < n; i++) {
+            if(b[i] > a[i]) {
+                cout << "NO" << endl;
+                return;
+            }
+            else if(a[i] - b[i] != dif && b[i] != 0) {
+                cout << "NO" << endl;
+                return;
+            }
+        }
+        cout << "YES" << endl;
+}
 int main() 
 { 
     ios::sync_with_stdio(0); 
@@ -25,20 +52,7 @@ int main()
     int T; 
     cin >> T; 
     while (T--) { 
-        ll n;
-        cin >> n;
-
-        ll ans = n / 3;
-        ll x = n % 3;
-        if(x == 2) {
-            cout << ans + 1 << ' ' << ans + 2 << ' ' << ans - 1 << endl;
-        }
-        else if(x == 1) {
-            cout << ans << ' ' << ans + 2 << ' ' << ans - 1 << endl;
-        }
-        else {
-            cout << ans << ' ' << ans + 1 << ' ' << ans - 1 << endl;
-        }
+        solve();
     } 
     return 0; 
 } 
