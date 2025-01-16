@@ -17,6 +17,19 @@ typedef pair<int, int> pi;
 #define PB push_back 
 #define POB pop_back 
 #define MP make_pair
+/*************  ✨ Codeium Command ⭐  *************/
+/**
+ * This function reads three integers n, m, and k from input and processes a series 
+ * of numbers in m groups each containing k numbers. It categorizes the numbers into 
+ * even and odd, tracking the maximum and minimum values for both categories in each group. 
+ * It then calculates a prefix sum of the minimal values between corresponding even and 
+ * odd values. Based on the comparison of the prefix sum with n, it outputs a sequence 
+ * of "Even" or "Odd", indicating which category provides a closer match to the target n 
+ * while adjusting n based on the smallest available numbers in the opposite category. 
+ * If n cannot be achieved, it outputs -1.
+ */
+
+/******  1e4344c6-99b3-4e50-8b6b-53582432a502  *******/
 void solve() {
     ll n, m, k;
         cin >> n >> m >> k;
